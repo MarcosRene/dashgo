@@ -14,6 +14,9 @@ export const theme = extendTheme({
       '100': '#d1d2dc',
       '50': '#eeeef2',
     },
+    blue: {
+      '900': '#008ffb',
+    },
   },
   fonts: {
     heading: 'Inter',
