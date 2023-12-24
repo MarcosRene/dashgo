@@ -1,11 +1,11 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import { Box, Flex, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 
-import { Header, Sidebar } from '../../components';
-import { CHART_SETUP } from '../../constants';
+import { Header, Sidebar } from "../../components";
+import { CHART_SETUP } from "../../constants";
 
-const Chart = dynamic(() => import('react-apexcharts'), {
+const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
@@ -27,7 +27,7 @@ export default function Dashboard() {
             border="2px"
             borderColor="transparent"
             _hover={{
-              borderColor: 'blue.900',
+              borderColor: "blue.900",
             }}
           >
             <Heading fontSize="lg" mb="4">
@@ -46,7 +46,7 @@ export default function Dashboard() {
             border="2px"
             borderColor="transparent"
             _hover={{
-              borderColor: 'blue.900',
+              borderColor: "blue.900",
             }}
           >
             <Heading fontSize="lg" mb="4">
