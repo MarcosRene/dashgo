@@ -1,42 +1,61 @@
-import { Box, Stack, Text, List } from "@chakra-ui/react";
-import { GENERAL_MENU, AUTOMATION_MENU } from "./constants";
-import MenuEntry from "./MenuEntry";
+import {
+  Box,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 
-export const Sidebar = () => (
-  <Box as="aside" w="64" mr="8">
-    <Stack spacing="12" align="flex-start">
-      <Box>
-        <Text
-          fontWeight="bold"
-          color="gray.400"
-          fontSize="sm"
-          textTransform="uppercase"
-        >
-          Geral
-        </Text>
+import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 
-        <List spacing="4" mt="8" align="stretch">
-          {Object.entries(GENERAL_MENU).map(([title, { icon, path }]) => (
-            <MenuEntry key={title} title={title} icon={icon} path={path} />
-          ))}
-        </List>
-      </Box>
-      <Box>
-        <Text
-          fontWeight="bold"
-          color="gray.400"
-          fontSize="sm"
-          textTransform="uppercase"
-        >
-          Automação
-        </Text>
+import { SidebarNav } from "./SidebarNav";
 
-        <List spacing="4" mt="8" align="stretch">
-          {Object.entries(AUTOMATION_MENU).map(([title, { icon, path }]) => (
-            <MenuEntry key={title} title={title} icon={icon} path={path} />
-          ))}
-        </List>
-      </Box>
-    </Stack>
-  </Box>
-);
+export const Sidebar = () => {
+  const { isOpen, onClose } = useSidebarDrawer();
+
+  const isDrowerSidebar = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
+  if (isDrowerSidebar) {
+    return (
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+        <DrawerOverlay>
+          <DrawerContent bg="gray.800" p="4">
+            <DrawerCloseButton mt="6" />
+            <DrawerHeader>
+              <Heading
+                as="h1"
+                fontSize={["2xl", "3xl"]}
+                fontWeight="bold"
+                letterSpacing="tight"
+                w="64"
+              >
+                dashgo
+                <Text as="span" color="pink.500">
+                  .
+                </Text>
+              </Heading>
+            </DrawerHeader>
+
+            <DrawerBody>
+              <SidebarNav />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    );
+  }
+
+  return (
+    <Box as="aside" w="64" mr="8">
+      <SidebarNav />
+    </Box>
+  );
+};

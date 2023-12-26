@@ -5,15 +5,24 @@ import {
   Heading,
   Input,
   Icon,
+  IconButton,
   HStack,
   Box,
   Avatar,
 } from "@chakra-ui/react";
 import { useBreakpointValue } from "@chakra-ui/react";
+import {
+  RiSearchLine,
+  RiNotificationLine,
+  RiUserLine,
+  RiMenuLine,
+} from "react-icons/ri";
 
-import { RiSearchLine, RiNotificationLine, RiUserLine } from "react-icons/ri";
+import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 
 export const Header = () => {
+  const { onOpen } = useSidebarDrawer();
+
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
@@ -22,43 +31,56 @@ export const Header = () => {
   return (
     <Center>
       <Flex w="100%" maxW={1480} h="20" mt="4" px="6" align="center">
-        <Heading
-          as="h1"
-          fontSize={["2xl", "3xl"]}
-          fontWeight="bold"
-          letterSpacing="tight"
-          w="64"
-        >
-          dashgo
-          <Text as="span" color="pink.500">
-            .
-          </Text>
-        </Heading>
+        {!isWideVersion && (
+          <IconButton
+            as={RiMenuLine}
+            mr="2"
+            fontSize="24"
+            variant="unstyled"
+            onClick={onOpen}
+            aria-label="Open navigation"
+          ></IconButton>
+        )}
 
         {isWideVersion && (
-          <Flex
-            as="label"
-            flex="1"
-            py="4"
-            px="8"
-            ml="6"
-            maxW={400}
-            alignSelf="center"
-            color="gray.200"
-            position="relative"
-            bg="gray.800"
-            borderRadius="full"
-          >
-            <Input
-              px="4"
-              mx="4"
-              variant="unstyled"
-              placeholder="Buscar na plataforma"
-              color="gray.50"
-              _placeholder={{ color: "gray.400" }}
-            />
-            <Icon as={RiSearchLine} fontSize="20" />
-          </Flex>
+          <>
+            <Heading
+              as="h1"
+              fontSize={["2xl", "3xl"]}
+              fontWeight="bold"
+              letterSpacing="tight"
+              w="64"
+            >
+              dashgo
+              <Text as="span" color="pink.500">
+                .
+              </Text>
+            </Heading>
+
+            <Flex
+              as="label"
+              flex="1"
+              py="4"
+              px="8"
+              ml="6"
+              maxW={400}
+              alignSelf="center"
+              color="gray.200"
+              position="relative"
+              bg="gray.800"
+              borderRadius="full"
+            >
+              <Input
+                px="4"
+                mx="4"
+                variant="unstyled"
+                placeholder="Buscar na plataforma"
+                color="gray.50"
+                _placeholder={{ color: "gray.400" }}
+              />
+              <Icon as={RiSearchLine} fontSize="20" />
+            </Flex>
+          </>
         )}
 
         <Flex align="center" ml="auto">
