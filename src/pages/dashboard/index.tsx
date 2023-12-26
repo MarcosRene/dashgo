@@ -19,7 +19,7 @@ export default function Dashboard() {
 
         <SimpleGrid flex="1" gap="4" minChildWidth={320} align="flex-start">
           <Box
-            p="8"
+            p={["6", "8"]}
             bg="gray.800"
             transitionDuration="180ms"
             transitionTimingFunction="ease-in-out"
@@ -38,7 +38,7 @@ export default function Dashboard() {
           </Box>
 
           <Box
-            p="8"
+            p={["6", "8"]}
             bg="gray.800"
             transitionDuration="180ms"
             transitionTimingFunction="ease-in-out"

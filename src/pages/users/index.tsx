@@ -15,11 +15,17 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 import { Header, Pagination, Sidebar } from "../../components";
 
 export default function Users() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex flexDir="column" h="100vh">
       <Header />
@@ -50,17 +56,17 @@ export default function Users() {
           <Table color="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" width="8">
+                <Th px={["4", "4", "6"]} color="gray.300" width="8">
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th>Usuário</Th>
-                <Th>Data de cadastro</Th>
+                {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th width="8"></Th>
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -73,18 +79,20 @@ export default function Users() {
                     </Text>
                   </Stack>
                 </Td>
-                <Td>24, Dezembro 2023.</Td>
+                {isWideVersion && <Td>24, Dezembro 2023.</Td>}
                 <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontWeight="sm"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                    cursor="pointer"
-                  >
-                    Editar
-                  </Button>
+                  {isWideVersion && (
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontWeight="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                      cursor="pointer"
+                    >
+                      Editar
+                    </Button>
+                  )}
                 </Td>
               </Tr>
             </Tbody>
