@@ -1,6 +1,6 @@
-import { Box, Stack, Text, List } from '@chakra-ui/react';
-import { GENERAL_MENU, AUTOMATION_MENU } from './constants';
-import MenuEntry from './MenuEntry';
+import { Box, Stack, Text, List } from "@chakra-ui/react";
+import { GENERAL_MENU, AUTOMATION_MENU } from "./constants";
+import MenuEntry from "./MenuEntry";
 
 export const Sidebar = () => (
   <Box as="aside" w="64" mr="8">
@@ -16,8 +16,8 @@ export const Sidebar = () => (
         </Text>
 
         <List spacing="4" mt="8" align="stretch">
-          {Object.entries(GENERAL_MENU).map(([title, { icon }]) => (
-            <MenuEntry title={title} icon={icon} />
+          {Object.entries(GENERAL_MENU).map(([title, { icon, path }]) => (
+            <MenuEntry key={title} title={title} icon={icon} path={path} />
           ))}
         </List>
       </Box>
@@ -32,8 +32,8 @@ export const Sidebar = () => (
         </Text>
 
         <List spacing="4" mt="8" align="stretch">
-          {Object.entries(AUTOMATION_MENU).map(([title, { icon }]) => (
-            <MenuEntry title={title} icon={icon} />
+          {Object.entries(AUTOMATION_MENU).map(([title, { icon, path }]) => (
+            <MenuEntry key={title} title={title} icon={icon} path={path} />
           ))}
         </List>
       </Box>

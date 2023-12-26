@@ -7,11 +7,11 @@ import {
 
 export const GENERAL_MENU = {
   Dashboard: {
-    path: '',
+    path: '/dashboard',
     icon: RiDashboardLine,
   },
   Usuários: {
-    path: '',
+    path: '/users',
     icon: RiContactsLine,
   },
 };
