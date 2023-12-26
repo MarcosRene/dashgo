@@ -3,26 +3,26 @@ import {
   RiDashboardLine,
   RiGitMergeLine,
   RiInputMethodLine,
-} from 'react-icons/ri';
+} from "react-icons/ri";
 
 export const GENERAL_MENU = {
   Dashboard: {
-    path: '/dashboard',
+    path: "/dashboard",
     icon: RiDashboardLine,
   },
   Usuários: {
-    path: '/users',
+    path: "/users",
     icon: RiContactsLine,
   },
 };
 
 export const AUTOMATION_MENU = {
   Formulários: {
-    path: '',
+    path: "/forms",
     icon: RiInputMethodLine,
   },
   Automação: {
-    path: '',
+    path: "/automation",
     icon: RiGitMergeLine,
   },
 };

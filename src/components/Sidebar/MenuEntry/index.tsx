@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { ListItem, Link as LinkChakra, Icon, Text } from "@chakra-ui/react";
+import { Link as ChakraLink, Icon, Text } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+
+import { ActiveLink } from "../../ActiveLink";
 
 type MenuEntryProps = {
   title: string;
@@ -9,14 +10,14 @@ type MenuEntryProps = {
 };
 
 const MenuEntry = ({ title, icon, path }: MenuEntryProps) => (
-  <Link href={path} passHref>
-    <LinkChakra display="flex" alignItems="center">
+  <ActiveLink href={path} passHref>
+    <ChakraLink display="flex" alignItems="center">
       <Icon as={icon} fontSize="20" />
       <Text as="span" ml="4" fontWeight="medium">
         {title}
       </Text>
-    </LinkChakra>
-  </Link>
+    </ChakraLink>
+  </ActiveLink>
 );
 
 export default MenuEntry;
