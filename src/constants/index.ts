@@ -1,4 +1,4 @@
-import { theme } from '@chakra-ui/react';
+import { theme } from "@chakra-ui/react";
 
 export const CHART_SETUP = {
   options: {
@@ -21,7 +21,7 @@ export const CHART_SETUP = {
       enabled: false,
     },
     xaxis: {
-      type: 'datetime',
+      type: "datetime",
       axisBorder: {
         color: theme.colors.gray[600],
       },
@@ -29,20 +29,20 @@ export const CHART_SETUP = {
         color: theme.colors.gray[600],
       },
       categories: [
-        '2021-04-01T00:00:00.000Z',
-        '2021-04-02T00:00:00.000Z',
-        '2021-04-03T00:00:00.000Z',
-        '2021-04-04T00:00:00.000Z',
-        '2021-04-05T00:00:00.000Z',
-        '2021-04-06T00:00:00.000Z',
-        '2021-04-07T00:00:00.000Z',
+        "2021-04-01T00:00:00.000Z",
+        "2021-04-02T00:00:00.000Z",
+        "2021-04-03T00:00:00.000Z",
+        "2021-04-04T00:00:00.000Z",
+        "2021-04-05T00:00:00.000Z",
+        "2021-04-06T00:00:00.000Z",
+        "2021-04-07T00:00:00.000Z",
       ],
     },
     fill: {
       opacity: 0.3,
-      type: 'gradient',
+      type: "gradient",
       gradient: {
-        shade: 'dark',
+        shade: "dark",
         opacityFrom: 0.7,
         opacityTo: 0.3,
       },
@@ -50,8 +50,11 @@ export const CHART_SETUP = {
   },
   series: [
     {
-      name: 'series1',
+      name: "series1",
       data: [31, 120, 10, 28, 61, 18, 109],
     },
   ],
 };
+
+export const BASE_URL =
+  process.env.REACT_APP_BASE_URL || "http://localhost:3000/api";

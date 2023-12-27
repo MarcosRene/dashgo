@@ -15,8 +15,8 @@ export function makeServer() {
 
     factories: {
       user: Factory.extend({
-        name(index: number) {
-          return `User ${index + 1}`;
+        name() {
+          return faker.person.fullName();
         },
         email() {
           return faker.internet.email().toLowerCase();
@@ -29,7 +29,7 @@ export function makeServer() {
     },
 
     seeds(server) {
-      server.createList("user", 200);
+      server.createList("user", 10);
     },
 
     routes() {
