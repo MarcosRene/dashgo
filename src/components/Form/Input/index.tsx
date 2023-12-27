@@ -1,21 +1,29 @@
-import { useState } from 'react';
-
-import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
+import { forwardRef, useState, ForwardRefRenderFunction } from "react";
+import { FieldError } from "react-hook-form";
 import {
   FormLabel,
   FormControl,
   Input as ChakraInput,
   InputGroup,
-  InputProps,
+  InputProps as ChakraInputProps,
   Stack,
   InputRightElement,
   IconButton,
-} from '@chakra-ui/react';
+  FormErrorMessage,
+} from "@chakra-ui/react";
+import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
-export const Input = (props: InputProps) => {
+interface InputProps extends ChakraInputProps {
+  error?: FieldError;
+}
+
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  props: InputProps,
+  ref
+) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const { id, type, name, placeholder, ...attrs } = props;
+  const { id, type, name, placeholder, error = null, ...attrs } = props;
 
   const inputId = id ?? name;
 
@@ -23,7 +31,7 @@ export const Input = (props: InputProps) => {
     setIsPasswordVisible((prevState) => !prevState);
 
   return (
-    <FormControl id={inputId}>
+    <FormControl id={inputId} isInvalid={!!error}>
       <Stack spacing="1">
         {placeholder && <FormLabel htmlFor={inputId}>{placeholder}</FormLabel>}
 
@@ -32,17 +40,18 @@ export const Input = (props: InputProps) => {
             id={inputId}
             size="lg"
             name={name}
-            type={isPasswordVisible ? 'text' : type}
+            type={isPasswordVisible ? "text" : type}
             bg="gray.900"
             variant="filled"
             focusBorderColor="pink.500"
             _hover={{
-              bg: 'gray.900',
+              bg: "gray.900",
             }}
+            ref={ref}
             {...attrs}
           />
 
-          {type === 'password' && (
+          {type === "password" && (
             <InputRightElement top="50%" transform="translateY(-50%)">
               <IconButton
                 onClick={handlePasswordVisibility}
@@ -54,7 +63,11 @@ export const Input = (props: InputProps) => {
             </InputRightElement>
           )}
         </InputGroup>
+
+        {!!error && <FormErrorMessage>{error.message}</FormErrorMessage>}
       </Stack>
     </FormControl>
   );
 };
+
+export const Input = forwardRef(InputBase);
