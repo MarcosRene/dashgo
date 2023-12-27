@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import {
   Box,
   Button,
@@ -25,6 +26,12 @@ export default function Users() {
     base: false,
     lg: true,
   });
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users")
+      .then((response) => response.json())
+      .then((data) => console.log(JSON.stringify(data, null, 2)));
+  }, []);
 
   return (
     <Flex flexDir="column" h="100vh">
