@@ -17,7 +17,7 @@ export async function getUsers(): Promise<User[]> {
     id: user.id,
     name: user.name,
     email: user.email,
-    createdAt: formatDate(user.createdAt),
+    createdAt: formatDate(user.created_at),
   }));
 
   return users;
@@ -25,6 +25,6 @@ export async function getUsers(): Promise<User[]> {
 
 export function useUsers() {
   return useQuery("users", getUsers, {
-    staleTime: 1000 * 10, // 10 seconds
+    staleTime: 1000 * 5, // 10 seconds
   });
 }

@@ -25,4 +25,14 @@ export function SidebarDrawerProdiver({ children }: SidebarDrawerProps) {
   );
 }
 
-export const useSidebarDrawer = () => useContext(SidebarDrawerContext);
+export const useSidebarDrawer = () => {
+  const context = useContext(SidebarDrawerContext);
+
+  if (!context) {
+    throw new Error(
+      "useSidebarDrawer must be used within an SidebarDrawerProdiver"
+    );
+  }
+
+  return context;
+};
