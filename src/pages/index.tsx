@@ -15,10 +15,7 @@ const signInFormSchema = yup.object().shape({
     .string()
     .required("O e-mail é obrigatório")
     .email("O formato do e-mail é inválido"),
-  password: yup
-    .string()
-    .required("A senha é obrigatória")
-    .min(8, "No mínimo 8 caracteres"),
+  password: yup.string().required("A senha é obrigatória"),
 });
 
 export default function SignIn() {
