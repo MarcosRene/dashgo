@@ -23,7 +23,7 @@ export default function SignIn() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm({
+  } = useForm<SignInFormData>({
     resolver: yupResolver(signInFormSchema),
   });
 

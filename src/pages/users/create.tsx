@@ -65,7 +65,7 @@ export default function Create() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm({
+  } = useForm<CreateUserFormData>({
     resolver: yupResolver(createUserFormSchema),
   });
 
